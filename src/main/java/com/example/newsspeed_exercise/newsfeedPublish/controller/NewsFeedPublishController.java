@@ -1,9 +1,9 @@
-package com.example.newsspeed_exercise.controller;
+package com.example.newsspeed_exercise.newsfeedPublish.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-public class NewsFeedController {
+public class NewsFeedPublishController {
 }
