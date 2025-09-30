@@ -1,6 +1,9 @@
 package com.example.newsspeed_exercise.newsfeedPublish.controller.port;
 
 import com.example.newsspeed_exercise.newsfeedPublish.controller.dto.NewsFeedPublishReqDto;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Optional;
 
 public interface NewsFeedPublishService {
     /**
@@ -9,5 +12,5 @@ public interface NewsFeedPublishService {
      * 2. 새로운 NewsFeed를 Cache에 저장
      * 3. 뉴스피드 전송 서비스(API) 호출
      */
-    boolean publish(NewsFeedPublishReqDto requestDto);
+    void publish(NewsFeedPublishReqDto requestDto, Optional<MultipartFile> attachment);
 }

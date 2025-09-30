@@ -1,5 +1,7 @@
-package com.example.newsspeed_exercise.newsfeedPublish.domain;
+package com.example.newsspeed_exercise.newsfeedPublish.infrastructure.database;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -7,18 +9,21 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Getter
+@Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class NewsFeedPublishDetails {
+@Getter
+public class NewsFeedEntity {
+    @Id
+    private String id;
     private String publisherId;
     private LocalDateTime publishDateTime;
     private String message;
-    private Object media;
+
     @Builder
-    private NewsFeedPublishDetails(String publisherId, LocalDateTime publishDateTime, String message, Object media) {
+    private NewsFeedEntity(String id, String publisherId, LocalDateTime publishDateTime, String message) {
+        this.id = id;
         this.publisherId = publisherId;
         this.publishDateTime = publishDateTime;
         this.message = message;
-        this.media = media;
     }
 }
