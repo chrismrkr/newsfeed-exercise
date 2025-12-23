@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Optional;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class NewsFeedAttachment {

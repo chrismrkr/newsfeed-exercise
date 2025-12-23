@@ -2,7 +2,6 @@ package com.example.newsspeed_exercise.newsfeedPublish.controller.port;
 
 import com.example.newsspeed_exercise.newsfeedPublish.controller.dto.NewsFeedPublishReqDto;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.util.Optional;
 
 public interface NewsFeedPublishService {

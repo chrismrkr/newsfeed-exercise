@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -27,16 +28,13 @@ public class NewsFeedPublishServiceImpl implements NewsFeedPublishService {
     @Override
     @Transactional
     public void publish(NewsFeedPublishReqDto requestDto, Optional<MultipartFile> attachment) {
-        if(attachment.isEmpty()) {
-            publish(requestDto);
-            return;
-        }
-
         String newFeedId = String.valueOf(UUID.randomUUID());
         NewsFeedDetails newsFeedDetails = NewsFeedDetails.create(newFeedId, requestDto);
         newsFeedRepository.insert(newsFeedDetails);
 
-        NewsFeedAttachment newsFeedAttachment = NewsFeedAttachment.builder().id(newFeedId).file(attachment.get()).build();
+        NewsFeedAttachment newsFeedAttachment = NewsFeedAttachment.builder()
+                .id(newFeedId)
+                .file(attachment.get()).build();
         newsFeedAttachmentRepository.save(newsFeedAttachment);
 
         newsFeedTransferInvoker.transferNewsFeed(newFeedId, newsFeedDetails.getPublisherId());
